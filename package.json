@@ -1,26 +1,13 @@
 {
     "name": "gefina",
     "version": "0.0.0",
-    "description": "",
-    "authors": [
-        {
-            "name": "Junior Souza",
-            "email": "juniorsouza@example.com"
-        }
-    ],
-    "type": "module",
-    "main": "server.ts",
+    "description": "Sistema de gestão de contas a receber.",
+    "authors": "Junior Souza",
+
     "scripts": {
-        "check": "tsc --noEmit && npx @biomejs/biome check ./",
-        "dev": "node --watch ./server.ts"
+        "check": "biome check ./"
     },
     "devDependencies": {
-        "@biomejs/biome": "2.5.15",
-        "@types/express": "^5.0.6",
-        "@types/node": "^26.6.3",
-        "typescript": "^7.0.2"
-    },
-    "dependencies": {
-        "express": "^5.2.1"
+        "@biomejs/biome": "2.5.15"
     }
 }
