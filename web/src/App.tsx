@@ -11,6 +11,7 @@ export default function App() {
         async function getInvoices() {
             try {
                 const response = await fetch('/api/invoices');
+                
                 if (!response.ok) {
                     setError(`Não foi possível carregar as faturas. Status: ${response.status}`);
                 }
