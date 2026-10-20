@@ -1,10 +1,25 @@
+import { 
+    BrowserRouter,
+    Routes, 
+    Route,
+    Link
+} from 'react-router'
+
 import DashboardPage from "./DashboardPage.tsx";
 import InvoicePage from "./InvoicePage.tsx";
 
 export default function App() {
-    return <>
-    <DashboardPage/>
-    <InvoicePage/>
-    </>
+    return <BrowserRouter>
+        <nav>
+            <Link to='/'>Painel inicial</Link>
+            <Link to='/faturas'>Faturas</Link>
+        </nav>
 
+        <Routes>
+            <Route path='/' element= {<DashboardPage/>} ></Route>
+            <Route path= '/faturas' element = {<InvoicePage/>}></Route>
+        </Routes>
+
+    </BrowserRouter>
+    
 }
