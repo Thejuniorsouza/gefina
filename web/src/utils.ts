@@ -5,7 +5,14 @@ export function situationLabel(situation: InvoiceSituation): string {
     case "paid": return "Pago";
     case "pending": return "Pendente";
     case "overdue": return "Atrasado";
-    default: return "Desconhecido";
+  }
+}
+
+export function situationClass(situation: InvoiceSituation): string {
+  switch (situation) {
+    case "paid": return "situation-paid";
+    case "pending": return "situation-pending";
+    case "overdue": return "situation-overdue"; 
   }
 }
 
