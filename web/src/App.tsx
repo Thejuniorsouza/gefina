@@ -10,15 +10,27 @@ import InvoicePage from "./InvoicePage.tsx";
 
 export default function App() {
     return <BrowserRouter>
+    <aside>
+        <header>Gefina</header>
         <nav>
-            <Link to='/'>Painel inicial</Link>
-            <Link to='/faturas'>Faturas</Link>
+            <ul>
+                <li>
+                     <Link to='/'>Painel inicial</Link>
+                </li>
+                <li>
+                     <Link to='/faturas'>Faturas</Link>
+                </li>
+            </ul>
         </nav>
+    </aside>
 
+    <main>
         <Routes>
             <Route path='/' element= {<DashboardPage/>} ></Route>
             <Route path= '/faturas' element = {<InvoicePage/>}></Route>
         </Routes>
+    </main>
+
 
     </BrowserRouter>
     

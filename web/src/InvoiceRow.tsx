@@ -1,6 +1,7 @@
 import type { Invoice } from "./invoiceType.ts";
 import {
   formatCurrency,
+  situationClass,
   formatDate, 
   situationLabel
 } from "./utils.ts";
@@ -16,7 +17,7 @@ export default function InvoiceRow(props: InvoiceRowProps) {
       <td className="numeric">{formatCurrency(props.invoice.amount)}</td>
       <td className="numeric">{formatDate(props.invoice.issueDate)}</td>
       <td className="numeric">{formatDate(props.invoice.dueDate)}</td>
-      <td>{situationLabel(props.invoice.situation)}</td>
+      <td className={situationClass(props.invoice.situation)}>{situationLabel(props.invoice.situation)}</td>
     </tr>
   );
 }
