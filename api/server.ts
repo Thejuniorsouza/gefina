@@ -6,9 +6,9 @@ import pool from "./database.ts";
 
 import dashboard from './dashboard.route.ts';
 import invoices from "./invoice.route.ts";
-import { request } from "http";
 
 const app = express();
+app.use(express.json());
 
 const dist = path.join(import.meta.dirname, '..','web','dist');
 
