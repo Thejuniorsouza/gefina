@@ -6,9 +6,10 @@ import pool from "./database.ts";
 
 import dashboard from './dashboard.route.ts';
 import invoices from "./invoice.route.ts";
-import { request } from "http";
+import handlError from "./error.middleware.ts";
 
 const app = express();
+app.use(express.json());
 
 const dist = path.join(import.meta.dirname, '..','web','dist');
 
@@ -51,5 +52,7 @@ app.use((request, response, next) => {
 app.use((_request, response) => {
   response.status(404).json({ message: "Recurso não encontrado" });
 });
+
+app.use(handlError)
 
 app.listen(Number(process.env.PORT) || 3000);
