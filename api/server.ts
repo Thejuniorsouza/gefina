@@ -6,7 +6,9 @@ import fs  from 'node:fs'
 import pool from "./database.ts";
 
 import dashboard from './dashboard.route.ts';
+import customers from './customer.route.ts'
 import invoices from "./invoice.route.ts";
+
 import handlError from "./error.middleware.ts";
 
 const app = express();
@@ -37,6 +39,7 @@ app.get("/api/health", async (_request, response) => {
   }
 });
 app.use('/api/dashboard', dashboard)
+app.use('/api/customers', customers)
 app.use("/api/invoices", invoices);
 
 app.use(express.static(dist));
