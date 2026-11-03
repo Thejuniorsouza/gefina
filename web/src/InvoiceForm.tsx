@@ -1,4 +1,4 @@
-import { useState, type SubmitEvent } from "react";
+import { useState, type SetStateAction, type SubmitEvent } from "react";
 
 import type { Invoice, InvoiceInput, InvoiceStatus } from "./invoiceType.ts";
 import type { CustomerOption } from "./customerType.ts";
@@ -8,6 +8,9 @@ interface InvoiceFormProps {
     customers: CustomerOption[];
     error: string | null;
     onDelete: () => void;
+    confirmDelete: boolean;
+    setConfirmDelete: React.Dispatch<SetStateAction<boolean>>;
+    confirm: () => void;
     onCancel: () => void;
     onSubmit: (values: InvoiceInput) => void;
     busy: boolean;
@@ -22,6 +25,7 @@ export default function InvoiceForm(props:InvoiceFormProps) {
 
     const handleSubmit = (event: SubmitEvent) => { 
         event.preventDefault();
+        props.setConfirmDelete(false)
 
         props.onSubmit({
             customerId: Number(customerId),
@@ -103,19 +107,35 @@ export default function InvoiceForm(props:InvoiceFormProps) {
             type="button" 
             disabled={props.busy} 
             onClick={props.onDelete}
-            >Excluir</button>}
+            >{props.busy && props.confirmDelete ? 'Excluindo...' : 'Excluir'}</button>}
         <button 
         className="button-secondary"
-            type="button"
-            disabled={props.busy}
-            onClick={props.onCancel}
-            >Cancelar</button>
+        type="button"
+        disabled={props.busy}
+        onClick={props.onCancel}
+        >Cancelar</button>
         <button 
         className="button-primary"
-            type="submit"
-            disabled={props.busy}
-            >{props.busy ? 'Salvando...' : 'Salvar'}
+        type="submit"
+        disabled={props.busy}
+        >{props.busy && !props.confirmDelete ? 'Salvando...' : 'Salvar'}
         </button>
         </div>
+
+        {props.confirmDelete && <div className="confirm-form">
+            <p>A exclusão é definitiva e não pode ser desfeita. Deseja prosseguir? </p>
+            <button
+                className="button-secondary"
+                type="button"
+                disabled={props.busy}
+                onClick={() => props.setConfirmDelete(false)}
+                >Não</button>
+            <button
+            className="button-danger"
+            type="button"
+            disabled={props.busy}
+            onClick={props.confirm}
+            >Sim</button>
+        </div>}
     </form>
 }
