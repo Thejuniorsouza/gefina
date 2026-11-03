@@ -30,6 +30,7 @@ export function formatDate(isoDate: string): string {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
+    timeZone: "UTC",
   });
   return formatter.format(new Date(`${isoDate}T00:00:00Z`));
 }

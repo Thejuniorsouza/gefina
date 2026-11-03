@@ -52,7 +52,7 @@ const baseQuery=`
   END AS situation,
   invoices.issue_date::text,
   invoices.due_date::text,
-  customers.id AS customers_id,
+  customers.id AS customer_id,
   customers.name AS customer_name,
   customers.email AS customer_email
 FROM invoices
@@ -85,7 +85,7 @@ export function toinvoices(rows: InvoiceRow[]): Invoice[] {
 export async function findAllInvoices(): Promise<Invoice[]> {
 const connect = await pool.query<InvoiceRow>(`
   ${baseQuery} 
-  ORDER BY invoices.issue_date DESC;
+  ORDER BY invoices.created_at DESC;
   `);
 
   return toinvoices(connect.rows);
