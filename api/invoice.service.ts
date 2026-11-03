@@ -52,7 +52,7 @@ const baseQuery=`
   END AS situation,
   invoices.issue_date::text,
   invoices.due_date::text,
-  customers.id AS customers_id,
+  customers.id AS customer_id,
   customers.name AS customer_name,
   customers.email AS customer_email
 FROM invoices

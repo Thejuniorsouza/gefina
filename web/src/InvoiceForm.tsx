@@ -88,6 +88,7 @@ export default function InvoiceForm(props:InvoiceFormProps) {
                     id="dueDate"
                     type="date"
                     value={dueDate}
+                    min={issueDate}
                     onChange={(event) => setDueDate(event.target.value)}
                     required
                 />
