@@ -1,0 +1,7 @@
+{
+    "prisma.pinToPrisma6": true,
+    "editor.smoothScrolling": true,
+    "editor.guides.bracketPairs": true,
+    "editor.minimap.autohide": "scroll",
+    "editor.cursorStyle": "block"
+}
