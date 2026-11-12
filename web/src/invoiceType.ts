@@ -26,11 +26,11 @@ export interface InvoiceInput {
 }
 
 export interface InvoiceFieldsErrors {
-  customerId?: string; 
-  amount?: string; 
-  status?: string; 
-  issueDate?: string; 
-  dueDate?: string; 
+  customerId?: string;
+  amount?: string;
+  status?: string;
+  issueDate?: string;
+  dueDate?: string;
 }
 
 export interface ApiFailure {
