@@ -1,10 +1,5 @@
 import type { Invoice } from "./invoiceType.ts";
-import {
-  formatCurrency,
-  situationClass,
-  formatDate, 
-  situationLabel
-} from "./utils.ts";
+import { formatCurrency, formatDate, situationClass, situationLabel } from "./utils.ts";
 
 interface InvoiceRowProps {
   invoice: Invoice;
@@ -20,11 +15,9 @@ export default function InvoiceRow(props: InvoiceRowProps) {
       <td className="numeric numeric-date">{formatDate(props.invoice.dueDate)}</td>
       <td className={situationClass(props.invoice.situation)}>{situationLabel(props.invoice.situation)}</td>
       <td className="td-button">
-        <button
-          className="button-secondary"
-          type="button"
-          onClick={() => props.edit(props.invoice)}
-        >Alterar</button>
+        <button className="button-secondary" type="button" onClick={() => props.edit(props.invoice)}>
+          Alterar
+        </button>
       </td>
     </tr>
   );

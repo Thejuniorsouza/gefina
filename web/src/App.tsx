@@ -1,37 +1,31 @@
-import { 
-    BrowserRouter,
-    Routes, 
-    Route,
-    NavLink
-} from 'react-router'
+import { BrowserRouter, NavLink, Route, Routes } from "react-router";
 
 import DashboardPage from "./DashboardPage.tsx";
 import InvoicePage from "./InvoicePage.tsx";
 
 export default function App() {
-    return <BrowserRouter>
-    <aside className='sidebar'>
-        <header className='brand'>Gefina</header>
-        <nav className='menu'>
-            <ul>
-                <li>
-                     <NavLink to='/'>Painel inicial</NavLink>
-                </li>
-                <li>
-                     <NavLink to='/faturas'>Faturas</NavLink>
-                </li>
-            </ul>
+  return (
+    <BrowserRouter>
+      <aside className="sidebar">
+        <header className="brand">Gefina</header>
+        <nav className="menu">
+          <ul>
+            <li>
+              <NavLink to="/">Painel inicial</NavLink>
+            </li>
+            <li>
+              <NavLink to="/faturas">Faturas</NavLink>
+            </li>
+          </ul>
         </nav>
-    </aside>
+      </aside>
 
-    <main className='content'>
+      <main className="content">
         <Routes>
-            <Route path='/' element= {<DashboardPage/>} ></Route>
-            <Route path= '/faturas' element = {<InvoicePage/>}></Route>
+          <Route path="/" element={<DashboardPage />}></Route>
+          <Route path="/faturas" element={<InvoicePage />}></Route>
         </Routes>
-    </main>
-
-
+      </main>
     </BrowserRouter>
-    
+  );
 }

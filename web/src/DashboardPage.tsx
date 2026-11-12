@@ -1,69 +1,68 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 
-import type { Dashboard } from './dashboardType.ts';
+import type { Dashboard } from "./dashboardType.ts";
+import InvoiceSummaryTable from "./InvoiceSummaryTable.tsx";
+import SummaryCard from "./SummaryCard.tsx";
 
-import SummaryCard from './SummaryCard.tsx';
-import InvoiceSummaryTable from './InvoiceSummaryTable.tsx';
-
-import { formatCurrency } from './utils.ts';
+import { formatCurrency } from "./utils.ts";
 
 export default function DashboardPage() {
-    const [dashboard, setDashboard] = useState<null | Dashboard>(null);
-    const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+  const [dashboard, setDashboard] = useState<null | Dashboard>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-        async function getDashboard() {
-            try {
-                const response = await fetch('/api/dashboard');
+  useEffect(() => {
+    async function getDashboard() {
+      try {
+        const response = await fetch("/api/dashboard");
 
-                if (!response.ok) {
-                    setError(`Não foi possível carregar as faturas. Status: ${response.status}`);
-                    setLoading(false);
-                    return;
-                }
-
-                const datas = await response.json();
-                setDashboard(datas);
-
-            } catch (error) { 
-                setError(`Não foi possível carregar as faturas.`);
-            }
-            setLoading(false);
+        if (!response.ok) {
+          setError(`Não foi possível carregar as faturas. Status: ${response.status}`);
+          setLoading(false);
+          return;
         }
-        
-        getDashboard();
-    }, []);
 
-    if (loading) return <p>Carregando faturas...</p>;
+        const datas = await response.json();
+        setDashboard(datas);
+      } catch (_error) {
+        setError(`Não foi possível carregar as faturas.`);
+      }
+      setLoading(false);
+    }
 
-    if (error || dashboard === null) return <p>{error}</p>;
+    getDashboard();
+  }, []);
 
-    
-    return <>
-        <h1> Painel inicial</h1>
+  if (loading) return <p>Carregando faturas...</p>;
 
-        <div className='summary-cards'>
-            <SummaryCard label = 'Total recebido:' value= {formatCurrency(dashboard.totals.paid)}/>
-            <SummaryCard label = 'Total pendente:' value= {formatCurrency(dashboard.totals.pending)}/>
-            <SummaryCard label = 'Faturas:' value= {String(dashboard.totals.invoiceCount)}/>
-            <SummaryCard label = 'Clientes' value= {String(dashboard.totals.customerCount)}/>
-        </div>
+  if (error || dashboard === null) return <p>{error}</p>;
 
-        <div className='summary-tables'>
+  return (
+    <>
+      <h1> Painel inicial</h1>
+
+      <div className="summary-cards">
+        <SummaryCard label="Total recebido:" value={formatCurrency(dashboard.totals.paid)} />
+        <SummaryCard label="Total pendente:" value={formatCurrency(dashboard.totals.pending)} />
+        <SummaryCard label="Faturas:" value={String(dashboard.totals.invoiceCount)} />
+        <SummaryCard label="Clientes" value={String(dashboard.totals.customerCount)} />
+      </div>
+
+      <div className="summary-tables">
         <InvoiceSummaryTable
-            title= 'Faturas recentes'
-            dateLabel= 'Emissão'
-            invoices={dashboard.recentInvoices}
-            date={(invoice) => invoice.issueDate}
+          title="Faturas recentes"
+          dateLabel="Emissão"
+          invoices={dashboard.recentInvoices}
+          date={(invoice) => invoice.issueDate}
         />
 
         <InvoiceSummaryTable
-            title= 'Faturas mais atrasadas'
-            dateLabel= 'Vencimento'
-            invoices={dashboard.overdueInvoices}
-            date={(invoice) => invoice.dueDate}
+          title="Faturas mais atrasadas"
+          dateLabel="Vencimento"
+          invoices={dashboard.overdueInvoices}
+          date={(invoice) => invoice.dueDate}
         />
-        </div>
-    </>;
+      </div>
+    </>
+  );
 }
