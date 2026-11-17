@@ -18,7 +18,7 @@ interface InvoiceFormProps {
 
 export default function InvoiceForm(props: InvoiceFormProps) {
   const [customerId, setCustomerId] = useState(!props.invoice ? undefined : String(props.invoice.customer.id));
-  const [amount, setAmount] = useState(!props.invoice ? "" : (props.invoice.amount / 100).toFixed(2));
+  const [amount, setAmount] = useState(!props.invoice ? undefined : (props.invoice.amount / 100).toFixed(2));
   const [status, setStatus] = useState<InvoiceStatus>(!props.invoice ? "pending" : props.invoice.status);
   const [issueDate, setIssueDate] = useState(!props.invoice ? "" : props.invoice.issueDate);
   const [dueDate, setDueDate] = useState(!props.invoice ? "" : props.invoice.dueDate);
