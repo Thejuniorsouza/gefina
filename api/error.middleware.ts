@@ -1,14 +1,14 @@
 import type { ErrorRequestHandler } from "express";
 
-const handlError: ErrorRequestHandler = (error, _request, response, _next) => {
+const handleError: ErrorRequestHandler = (error, _request, response, _next) => {
   console.error(error);
 
   response.status(500).json({
     error: {
       status: 500,
-      message: "Nào foi possível concluir a operaçào.",
+      message: "Não foi possível concluir a operação.",
     },
   });
 };
 
-export default handlError;
+export default handleError;
