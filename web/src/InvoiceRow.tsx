@@ -7,15 +7,17 @@ interface InvoiceRowProps {
 }
 
 export default function InvoiceRow(props: InvoiceRowProps) {
+  const base = 'p-3 border-b border-border' 
+
   return (
     <tr>
-      <td>{props.invoice.customer.name}</td>
-      <td className="numeric">{formatCurrency(props.invoice.amount)}</td>
-      <td className="numeric numeric-date">{formatDate(props.invoice.issueDate)}</td>
-      <td className="numeric numeric-date">{formatDate(props.invoice.dueDate)}</td>
-      <td className={situationClass(props.invoice.situation)}>{situationLabel(props.invoice.situation)}</td>
-      <td className="td-button">
-        <button className="button-secondary" type="button" onClick={() => props.edit(props.invoice)}>
+      <td className={base}>{props.invoice.customer.name}</td>
+      <td className={`${base} tabular-nums`}>{formatCurrency(props.invoice.amount)}</td>
+      <td className={`${base} text-center tabular-nums`}>{formatDate(props.invoice.issueDate)}</td>
+      <td className={`${base} text-center tabular-nums`}>{formatDate(props.invoice.dueDate)}</td>
+      <td className={`${base} text-center ${situationClass(props.invoice.situation)}`}>{situationLabel(props.invoice.situation)}</td>
+      <td className={`${base} text-center px-0`}>
+        <button className="px-4 py-2 border border-border rounded-control cursor-pointer hover:bg-surface-raised" type="button" onClick={() => props.edit(props.invoice)}>
           Alterar
         </button>
       </td>
