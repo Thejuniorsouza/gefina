@@ -14,11 +14,11 @@
   "css": {
     "parser": {
       "tailwindDirectives": true
-  },
+    },
     "formatter": {
-    "quoteStyle": "double"
-  }
-},
+      "quoteStyle": "double"
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {

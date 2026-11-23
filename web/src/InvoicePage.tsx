@@ -120,7 +120,11 @@ export default function InvoicePage() {
     <>
       <header className="flex justify-between items-center mb-6">
         <h1 className="text-xl font-semibold">Faturas</h1>
-        <button className="bg-primary px-4 py-2 rounded-control cursor-pointer focus-visible:outline-2 focus-visible:outline-primar" type="button" onClick={() => openModal(null)}>
+        <button
+          className="bg-primary px-4 py-2 rounded-control cursor-pointer focus-visible:outline-2 focus-visible:outline-primar"
+          type="button"
+          onClick={() => openModal(null)}
+        >
           Nova fatura
         </button>
       </header>
@@ -130,7 +134,7 @@ export default function InvoicePage() {
       </div>
 
       <dialog
-        className="w-xl m-auto p-6 rounded-dialog bg-surface backdrop:bg-background-backdrop border border-border text-text focus-visible:outline-2 focus-visible:outline-primary" 
+        className="w-xl m-auto p-6 rounded-dialog bg-surface backdrop:bg-background-backdrop border border-border text-text focus-visible:outline-2 focus-visible:outline-primary"
         ref={dialogRef}
         onClose={() => {
           setDialogContent(false);

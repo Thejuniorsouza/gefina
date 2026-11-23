@@ -4,11 +4,11 @@ import DashboardPage from "./DashboardPage.tsx";
 import InvoicePage from "./InvoicePage.tsx";
 
 export default function App() {
-  function apply(state: boolean):string {
-    const base = 'block px-3 py-2  rounded-control focus-visible:outline-2 focus-visible:outline-primary'
+  function apply(state: boolean): string {
+    const base = "block px-3 py-2  rounded-control focus-visible:outline-2 focus-visible:outline-primary";
 
     if (state) return `${base} bg-surface-raised font-medium`;
-    
+
     return `${base} text-text-muted hover:bg-surface-raised hover:text-text`;
   }
 
@@ -19,16 +19,12 @@ export default function App() {
         <nav className="menu">
           <ul className="flex flex-col gap-1">
             <li>
-              <NavLink 
-              className={({ isActive }) => apply(isActive)} 
-              to="/">
+              <NavLink className={({ isActive }) => apply(isActive)} to="/">
                 Painel inicial
               </NavLink>
             </li>
             <li>
-              <NavLink 
-              className={({ isActive }) => apply(isActive)} 
-              to="/faturas">
+              <NavLink className={({ isActive }) => apply(isActive)} to="/faturas">
                 Faturas
               </NavLink>
             </li>

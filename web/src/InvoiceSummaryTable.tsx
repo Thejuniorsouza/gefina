@@ -10,8 +10,7 @@ interface InvoiceSummaryTableProps {
 }
 
 export default function InvoiceSummaryTable(props: InvoiceSummaryTableProps) {
-
-  const base = 'p-3 border-b border-border'
+  const base = "p-3 border-b border-border";
 
   return (
     <div className="flex-1 p-4 bg-surface border border-border rounded-surface">
@@ -30,10 +29,8 @@ export default function InvoiceSummaryTable(props: InvoiceSummaryTableProps) {
             return (
               <tr key={invoice.id}>
                 <td className={base}>{invoice.customer.name}</td>
-                <td className={`${base} tabular-nums`}>
-                  {formatCurrency(invoice.amount)}</td>
-                <td className={`${base} text-center tabular-nums`}>
-                  {formatDate(props.date(invoice))}</td>
+                <td className={`${base} tabular-nums`}>{formatCurrency(invoice.amount)}</td>
+                <td className={`${base} text-center tabular-nums`}>{formatDate(props.date(invoice))}</td>
               </tr>
             );
           })}
