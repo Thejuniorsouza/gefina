@@ -1,4 +1,4 @@
-import type { ApiFailure, Invoice, InvoiceInput } from "./invoiceType.ts";
+import type { ApiFailure, Invoice, InvoiceInput } from "../types/invoiceType.ts";
 
 export async function getAllInvoices(): Promise<Invoice[]> {
   const response = await fetch("/api/invoices");
