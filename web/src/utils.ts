@@ -14,11 +14,11 @@ export function situationLabel(situation: InvoiceSituation): string {
 export function situationClass(situation: InvoiceSituation): string {
   switch (situation) {
     case "paid":
-      return "situation-paid";
+      return "text-paid";
     case "pending":
-      return "situation-pending";
+      return "text-pending";
     case "overdue":
-      return "situation-overdue";
+      return "text-overdue";
   }
 }
 
