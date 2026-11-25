@@ -1,6 +1,7 @@
 import { BrowserRouter, NavLink, Route, Routes } from "react-router";
 
 import DashboardPage from "./DashboardPage.tsx";
+import { GefinaLogo } from "./GefinaLogo.tsx";
 import InvoicePage from "./InvoicePage.tsx";
 
 export default function App() {
@@ -15,7 +16,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <aside className="fixed w-60 h-full flex flex-col gap-8 p-6 border border-border bg-surface">
-        <header className="text-xl font-bold uppercase text-center">Gefina</header>
+        <header className="flex justify-center text-text">
+          <GefinaLogo height={28} />
+        </header>
         <nav className="menu">
           <ul className="flex flex-col gap-1">
             <li>
